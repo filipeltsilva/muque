@@ -1,0 +1,23 @@
+{
+  "name": "Muque",
+  "description": "A boilerplate for front-end projects",
+  "main": "gulpfile.js",
+  "authors": [
+    "Filipe Lemos"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "Muque",
+    "Boilerplate",
+    "Front-end"
+  ],
+  "homepage": "https://github.com/filipeltsilva/Muque",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

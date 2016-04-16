@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/filipeltsilva/Muque/issues"
   },
-  "homepage": "https://github.com/filipeltsilva/Muque#readme"
+  "homepage": "https://github.com/filipeltsilva/Muque#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
 }
