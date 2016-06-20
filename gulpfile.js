@@ -5,6 +5,8 @@ var stylus = require("gulp-stylus");
 var uglify = require("gulp-uglify");
 
 var distPath = {
+  images: "./dist/images/",
+  maps: "./dist/maps/",
   root: "./dist/"
 };
 
@@ -26,14 +28,16 @@ gulp.task("css", function() {
       .pipe(stylus({
         compress: true
       }))
-    .pipe(sourceMaps.write("."))
+    .pipe(sourceMaps.write(distPath.maps))
     .pipe(addMinifiedFileSuffix(rename))
     .pipe(gulp.dest(distPath.root));
 });
 
 gulp.task("js", function() {
   return gulp.src(sourcePath.javascript)
-    .pipe(uglify())
+    .pipe(sourceMaps.init())
+      .pipe(uglify())
+    .pipe(sourceMaps.write(distPath.maps))
     .pipe(addMinifiedFileSuffix(rename))
     .pipe(gulp.dest(distPath.root));
 });
