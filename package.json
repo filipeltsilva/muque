@@ -23,8 +23,9 @@
   "homepage": "https://github.com/filipeltsilva/Muque#readme",
   "devDependencies": {
     "gulp": "^3.9.1",
-    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
     "gulp-sourcemaps": "^1.6.0",
-    "gulp-stylus": "^2.4.0"
+    "gulp-stylus": "^2.4.0",
+    "gulp-uglify": "^1.5.3"
   }
 }
