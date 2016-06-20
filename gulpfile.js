@@ -1,19 +1,19 @@
-var gulp = require("gulp");
-var rename = require("gulp-rename");
+var gulp       = require("gulp");
+var rename     = require("gulp-rename");
 var sourceMaps = require("gulp-sourcemaps");
-var stylus = require("gulp-stylus");
-var uglify = require("gulp-uglify");
+var stylus     = require("gulp-stylus");
+var uglify     = require("gulp-uglify");
 
 var distPath = {
   images: "./dist/images/",
-  maps: "./dist/maps/",
-  root: "./dist/"
+  maps  : "./dist/maps/",
+  root  : "./dist/"
 };
 
 var sourcePath = {
-  css: "./src/stylus/**/*.styl",
+  css       : "./src/stylus/**/*.styl",
   javascript: "./src/javascripts/**/*.js",
-  stylus: "./src/stylus/main.styl"
+  stylus    : "./src/stylus/main.styl"
 };
 
 function addMinifiedFileSuffix(renameTask) {
