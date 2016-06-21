@@ -18,8 +18,8 @@ var sourcePath = {
   stylus    : "./src/stylus/main.styl"
 };
 
-function addMinifiedFileSuffix(renameTask) {
-  return renameTask({
+function addMinifiedFileSuffix(renamedTask) {
+  return renamedTask({
     suffix: ".min"
   });
 }
