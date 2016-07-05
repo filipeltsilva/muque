@@ -1,5 +1,6 @@
 var gulp       = require("gulp");
 var imageMin   = require("gulp-imagemin");
+var koutoSwiss = require("kouto-swiss");
 var rename     = require("gulp-rename");
 var sourceMaps = require("gulp-sourcemaps");
 var stylus     = require("gulp-stylus");
@@ -28,7 +29,8 @@ gulp.task("css", function() {
   return gulp.src(sourcePath.stylus)
     .pipe(sourceMaps.init())
       .pipe(stylus({
-        compress: true
+        compress: true,
+        use: koutoSwiss()
       }))
     .pipe(sourceMaps.write(distPath.maps))
     .pipe(addMinifiedFileSuffix(rename))
