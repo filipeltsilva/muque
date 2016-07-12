@@ -55,16 +55,24 @@ gulp.task('js', () => {
     .pipe(gulp.dest(distPath.root));
 });
 
+gulp.task('reload', () => {
+  return gulp.src('./dist/**/*')
+    .pipe(connect.reload());
+});
+
 gulp.task('server', () => {
   connect.server({
     livereload: true,
-    port: 8888,
+    port: 9999,
     root: distPath.root
   })
 });
 
 gulp.task('watch', () => {
+  gulp.watch('./dist/**/*', ['reload']);
   gulp.watch(sourcePath.css, ['css']);
   gulp.watch(sourcePath.images, ['images']);
   gulp.watch(sourcePath.javascript, ['js']);
 });
+
+gulp.task('default', ['server', 'watch']);
