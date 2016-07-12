@@ -1,31 +1,34 @@
-var gulp       = require("gulp");
-var imageMin   = require("gulp-imagemin");
-var koutoSwiss = require("kouto-swiss");
-var rename     = require("gulp-rename");
-var sourceMaps = require("gulp-sourcemaps");
-var stylus     = require("gulp-stylus");
-var uglify     = require("gulp-uglify");
+'use strict';
+
+var gulp       = require('gulp');
+var connect    = require('gulp-connect');
+var imageMin   = require('gulp-imagemin');
+var koutoSwiss = require('kouto-swiss');
+var rename     = require('gulp-rename');
+var sourceMaps = require('gulp-sourcemaps');
+var stylus     = require('gulp-stylus');
+var uglify     = require('gulp-uglify');
 
 var distPath = {
-  images: "./dist/images/",
-  maps  : "./maps/",
-  root  : "./dist/"
+  images: './dist/images/',
+  maps  : './maps/',
+  root  : './dist/'
 };
 
 var sourcePath = {
-  css       : "./src/stylus/**/*.styl",
-  images    : "./src/images/**",
-  javascript: "./src/javascripts/**/*.js",
-  stylus    : "./src/stylus/main.styl"
+  css       : './src/stylus/**/*.styl',
+  images    : './src/images/**',
+  javascript: './src/javascripts/**/*.js',
+  stylus    : './src/stylus/main.styl'
 };
 
 function addMinifiedFileSuffix(renamedTask) {
   return renamedTask({
-    suffix: ".min"
+    suffix: '.min'
   });
 }
 
-gulp.task("css", function() {
+gulp.task('css', () => {
   return gulp.src(sourcePath.stylus)
     .pipe(sourceMaps.init())
       .pipe(stylus({
@@ -37,13 +40,13 @@ gulp.task("css", function() {
     .pipe(gulp.dest(distPath.root));
 });
 
-gulp.task("images", function() {
+gulp.task('images', () => {
   return gulp.src(sourcePath.images)
     .pipe(imageMin())
     .pipe(gulp.dest(distPath.images));
 });
 
-gulp.task("js", function() {
+gulp.task('js', () => {
   return gulp.src(sourcePath.javascript)
     .pipe(sourceMaps.init())
       .pipe(uglify())
@@ -52,8 +55,16 @@ gulp.task("js", function() {
     .pipe(gulp.dest(distPath.root));
 });
 
-gulp.task("watch", function() {
-  gulp.watch(sourcePath.css, ["css"]);
-  gulp.watch(sourcePath.images, ["images"]);
-  gulp.watch(sourcePath.javascript, ["js"]);
+gulp.task('server', () => {
+  connect.server({
+    livereload: true,
+    port: 8888,
+    root: distPath.root
+  })
+});
+
+gulp.task('watch', () => {
+  gulp.watch(sourcePath.css, ['css']);
+  gulp.watch(sourcePath.images, ['images']);
+  gulp.watch(sourcePath.javascript, ['js']);
 });
