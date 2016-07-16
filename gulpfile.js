@@ -5,6 +5,7 @@ var gulp        = require('gulp')
   , changed     = require('gulp-changed')
   , imageMin    = require('gulp-imagemin')
   , koutoSwiss  = require('kouto-swiss')
+  , plumber     = require('gulp-plumber')
   , rename      = require('gulp-rename')
   , sourceMaps  = require('gulp-sourcemaps')
   , stylus      = require('gulp-stylus')
@@ -42,6 +43,7 @@ gulp.task('browser-sync', () => {
 
 gulp.task('css', () => {
   return gulp.src(sourcePath.stylusMainFile)
+    .pipe(plumber())
     .pipe(sourceMaps.init())
       .pipe(stylus({
         compress: true,
@@ -49,24 +51,29 @@ gulp.task('css', () => {
       }))
     .pipe(sourceMaps.write(distPath.maps))
     .pipe(addMinifiedFileSuffix(rename))
+    .pipe(plumber.stop())
     .pipe(gulp.dest(distPath.root))
     .pipe(browserSync.stream());
 });
 
 gulp.task('images', () => {
   return gulp.src(sourcePath.images)
+    .pipe(plumber())
     .pipe(changed(distPath.images))
     .pipe(imageMin())
+    .pipe(plumber.stop())
     .pipe(gulp.dest(distPath.images))
     .pipe(browserSync.stream());
 });
 
 gulp.task('js', () => {
   return gulp.src(sourcePath.javascript)
+    .pipe(plumber())
     .pipe(sourceMaps.init())
       .pipe(uglify())
     .pipe(sourceMaps.write(distPath.maps))
     .pipe(addMinifiedFileSuffix(rename))
+    .pipe(plumber.stop())
     .pipe(gulp.dest(distPath.root))
     .pipe(browserSync.stream());
 });
