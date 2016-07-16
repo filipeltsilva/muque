@@ -49,7 +49,6 @@ gulp.task('css', () => {
       }))
     .pipe(sourceMaps.write(distPath.maps))
     .pipe(addMinifiedFileSuffix(rename))
-    .on('error', (error) => {console.log(error.message);})
     .pipe(gulp.dest(distPath.root))
     .pipe(browserSync.stream());
 });
