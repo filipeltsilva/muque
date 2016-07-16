@@ -1,15 +1,15 @@
 'use strict';
 
-var gulp        = require('gulp');
-var browserSync = require('browser-sync').create();
-var changed     = require('gulp-changed');
-var imageMin    = require('gulp-imagemin');
-var koutoSwiss  = require('kouto-swiss');
-var reload      = browserSync.reload;
-var rename      = require('gulp-rename');
-var sourceMaps  = require('gulp-sourcemaps');
-var stylus      = require('gulp-stylus');
-var uglify      = require('gulp-uglify');
+var gulp        = require('gulp')
+  , browserSync = require('browser-sync').create()
+  , changed     = require('gulp-changed')
+  , imageMin    = require('gulp-imagemin')
+  , koutoSwiss  = require('kouto-swiss')
+  , rename      = require('gulp-rename')
+  , sourceMaps  = require('gulp-sourcemaps')
+  , stylus      = require('gulp-stylus')
+  , uglify      = require('gulp-uglify')
+;
 
 var distPath = {
   images: './dist/images/',
@@ -32,14 +32,13 @@ function addMinifiedFileSuffix(renamedTask) {
 
 gulp.task('browser-sync', () => {
   browserSync.init({
-    server: distPath.root;
+    server: distPath.root
   });
 
-  gulp.watch(sourcePath.css, ['css']).on('change', reload);
-  gulp.watch(sourcePath.images, ['images']).on('change', reload);
-  gulp.watch(sourcePath.javascript, ['js']).on('change', reload);
-
-})
+  gulp.watch(sourcePath.css, ['css']);
+  gulp.watch(sourcePath.images, ['images']);
+  gulp.watch(sourcePath.javascript, ['js']);
+});
 
 gulp.task('css', () => {
   return gulp.src(sourcePath.stylusMainFile)
@@ -51,14 +50,16 @@ gulp.task('css', () => {
     .pipe(sourceMaps.write(distPath.maps))
     .pipe(addMinifiedFileSuffix(rename))
     .on('error', (error) => {console.log(error.message);})
-    .pipe(gulp.dest(distPath.root));
+    .pipe(gulp.dest(distPath.root))
+    .pipe(browserSync.stream());
 });
 
 gulp.task('images', () => {
   return gulp.src(sourcePath.images)
     .pipe(changed(distPath.images))
     .pipe(imageMin())
-    .pipe(gulp.dest(distPath.images));
+    .pipe(gulp.dest(distPath.images))
+    .pipe(browserSync.stream());
 });
 
 gulp.task('js', () => {
@@ -67,7 +68,8 @@ gulp.task('js', () => {
       .pipe(uglify())
     .pipe(sourceMaps.write(distPath.maps))
     .pipe(addMinifiedFileSuffix(rename))
-    .pipe(gulp.dest(distPath.root));
+    .pipe(gulp.dest(distPath.root))
+    .pipe(browserSync.stream());
 });
 
 gulp.task('default', ['browser-sync']);
