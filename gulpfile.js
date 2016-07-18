@@ -15,7 +15,6 @@ var gulp        = require('gulp')
 
 var distPath = {
   images: './dist/images/',
-  maps  : './maps/',
   root  : './dist/'
 };
 
@@ -37,14 +36,16 @@ gulp.task('browser-sync', () => {
     server: distPath.root
   });
 
-  gulp.watch(sourcePath.css, ['css']);
+  gulp.watch([sourcePath.css, sourcePath.stylusMainFile], ['css']);
   gulp.watch(sourcePath.images, ['images']);
   gulp.watch(sourcePath.javascript, ['js']);
 });
 
 gulp.task('deploy', () => {
-  return gulp.src('./dist/**/*')
-    .pipe(ghPages());
+  return gulp.src(distPath.root + '**/*')
+    .pipe(ghPages({
+      force: true
+    }));
 });
 
 gulp.task('css', () => {
@@ -55,7 +56,7 @@ gulp.task('css', () => {
         compress: true,
         use: koutoSwiss()
       }))
-    .pipe(sourceMaps.write(distPath.maps))
+    .pipe(sourceMaps.write())
     .pipe(addMinifiedFileSuffix(rename))
     .pipe(plumber.stop())
     .pipe(gulp.dest(distPath.root))
@@ -77,7 +78,7 @@ gulp.task('js', () => {
     .pipe(plumber())
     .pipe(sourceMaps.init())
       .pipe(uglify())
-    .pipe(sourceMaps.write(distPath.maps))
+    .pipe(sourceMaps.write())
     .pipe(addMinifiedFileSuffix(rename))
     .pipe(plumber.stop())
     .pipe(gulp.dest(distPath.root))
