@@ -3,6 +3,7 @@
 var gulp        = require('gulp')
   , browserSync = require('browser-sync').create()
   , changed     = require('gulp-changed')
+  , ghPages     = require('gulp-gh-pages')
   , imageMin    = require('gulp-imagemin')
   , koutoSwiss  = require('kouto-swiss')
   , plumber     = require('gulp-plumber')
@@ -39,6 +40,11 @@ gulp.task('browser-sync', () => {
   gulp.watch(sourcePath.css, ['css']);
   gulp.watch(sourcePath.images, ['images']);
   gulp.watch(sourcePath.javascript, ['js']);
+});
+
+gulp.task('deploy', () => {
+  return gulp.src('./dist/**/*')
+    .pipe(ghPages());
 });
 
 gulp.task('css', () => {
