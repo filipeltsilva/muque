@@ -3,7 +3,7 @@
 var gulp        = require('gulp')
   , browserSync = require('browser-sync').create()
   , changed     = require('gulp-changed')
-  , ghPages     = require('gulp-gh-pages')
+  , gitDeploy   = require('gulp-deploy-git')
   , imageMin    = require('gulp-imagemin')
   , koutoSwiss  = require('kouto-swiss')
   , plumber     = require('gulp-plumber')
@@ -41,10 +41,12 @@ gulp.task('browser-sync', () => {
   gulp.watch(sourcePath.javascript, ['js']);
 });
 
-gulp.task('deploy', () => {
-  return gulp.src(distPath.root + '**/*')
-    .pipe(ghPages({
-      force: true
+gulp.task('git-deploy', () => {
+  return gulp.src(distPath.root + '**/*', {read: false})
+    .pipe(gitDeploy({
+      branches: ['master'],
+      debug: true,
+      repository: 'https://github.com/filipeltsilva/filipeltsilva.github.io.git'
     }));
 });
 
