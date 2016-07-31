@@ -3,7 +3,7 @@
 var gulp        = require('gulp')
   , browserSync = require('browser-sync').create()
   , changed     = require('gulp-changed')
-  , gitDeploy   = require('gulp-deploy-git')
+  , ghPages     = require('gulp-gh-pages-cname')
   , imageMin    = require('gulp-imagemin')
   , koutoSwiss  = require('kouto-swiss')
   , plumber     = require('gulp-plumber')
@@ -41,12 +41,10 @@ gulp.task('browser-sync', () => {
   gulp.watch(sourcePath.javascript, ['js']);
 });
 
-gulp.task('git-deploy', () => {
-  return gulp.src(distPath.root + '**/*', {read: false})
-    .pipe(gitDeploy({
-      branches: ['master'],
-      debug: true,
-      repository: 'https://github.com/filipeltsilva/filipeltsilva.github.io.git'
+gulp.task('deploy', () => {
+  return gulp.src(distPath.root + '**/*')
+    .pipe(ghPages({
+      // Configure your deploy according your necessities following the gulp-gh-pages-cname documentation
     }));
 });
 
