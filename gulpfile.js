@@ -31,16 +31,6 @@ function addMinifiedFileSuffix(renamedTask) {
   });
 }
 
-gulp.task('browser-sync', () => {
-  browserSync.init({
-    server: distPath.root
-  });
-
-  gulp.watch([sourcePath.css, sourcePath.stylusMainFile], ['css']);
-  gulp.watch(sourcePath.images, ['images']);
-  gulp.watch(sourcePath.javascript, ['js']);
-});
-
 gulp.task('deploy', () => {
   return gulp.src(distPath.root + '**/*')
     .pipe(ghPages({
@@ -85,4 +75,14 @@ gulp.task('js', () => {
     .pipe(browserSync.stream());
 });
 
-gulp.task('default', ['browser-sync']);
+gulp.task('server', () => {
+  browserSync.init({
+    server: distPath.root
+  });
+
+  gulp.watch([sourcePath.css, sourcePath.stylusMainFile], ['css']);
+  gulp.watch(sourcePath.images, ['images']);
+  gulp.watch(sourcePath.javascript, ['js']);
+});
+
+gulp.task('default', ['server']);
