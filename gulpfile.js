@@ -5,11 +5,6 @@ var gulp        = require('gulp')
   , changed     = require('gulp-changed')
   , ghPages     = require('gulp-gh-pages-cname')
   , imageMin    = require('gulp-imagemin')
-  , koutoSwiss  = require('kouto-swiss')
-  , plumber     = require('gulp-plumber')
-  , rename      = require('gulp-rename')
-  , sourceMaps  = require('gulp-sourcemaps')
-  , stylus      = require('gulp-stylus')
   , uglify      = require('gulp-uglify')
 ;
 
@@ -25,11 +20,7 @@ var sourcePath = {
   stylusMainFile: './src/stylus/main.styl'
 };
 
-function addMinifiedFileSuffix(renamedTask) {
-  return renamedTask({
-    suffix: '.min'
-  });
-}
+const styles = require('./tasks/styles');
 
 gulp.task('deploy', () => {
   return gulp.src(distPath.root + '**/*')
