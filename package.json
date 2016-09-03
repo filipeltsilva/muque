@@ -1,5 +1,5 @@
 {
-  "name": "Muque",
+  "name": "muque",
   "version": "1.0.0",
   "description": "A boilerplate for front-end projects",
   "main": "gulpfile.js",
@@ -8,19 +8,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/filipeltsilva/Muque.git"
+    "url": "https://github.com/filipeltsilva/muque.git"
   },
   "keywords": [
-    "Muque",
+    "muque",
     "Boilerplate",
     "Front-end"
   ],
   "author": "Filipe Lemos",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/filipeltsilva/Muque/issues"
+    "url": "https://github.com/filipeltsilva/muque/issues"
   },
-  "homepage": "https://github.com/filipeltsilva/Muque#readme",
+  "homepage": "https://github.com/filipeltsilva/muque#readme",
   "devDependencies": {
     "browser-sync": "^2.13.0",
     "gulp": "^3.9.1",

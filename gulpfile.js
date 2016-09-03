@@ -6,4 +6,4 @@ const styles = require('./tasks/styles');
 
 gulp.task('default', styles.dev);
 
-gulp.task('build', styles.production)
+gulp.task('build', styles.production);

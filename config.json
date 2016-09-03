@@ -1,0 +1,17 @@
+{
+  "folders" : {
+    "buildRoot": "./dist",
+    "images": {
+      "destination": "./dist/images",
+      "source": "./src/images"
+    },
+    "scripts": [
+      "./src/scripts/**/*",
+      "./src/scripts/application.js"
+    ],
+    "styles": [
+      "./src/stylus/**/*.styl",
+      "./src/stylus/main.styl"
+    ]
+  }
+}

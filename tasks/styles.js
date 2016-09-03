@@ -1,21 +1,16 @@
 'use strict';
 
-const stylePath = {
-  source     : './src/stylus/**/*.styl',
-  stylusFile : './src/stylus/main.styl',
-  destination: './dist'
-};
+const config = require('config.json');
 
-let gulp       = require('gulp');
-let koutoSwiss = require('kouto-swiss');
-let plumber    = require('gulp-plumber');
-let sourceMaps = require('gulp-sourcemaps');
-let stylus     = require('gulp-stylus');
-
-let cssMin = require('gulp-cssmin');
+const gulp       = require('gulp');
+const cssMin     = require('gulp-cssmin');
+const koutoSwiss = require('kouto-swiss');
+const plumber    = require('gulp-plumber');
+const sourceMaps = require('gulp-sourcemaps');
+const stylus     = require('gulp-stylus');
 
 function buildToDev() {
-  return gulp.src(stylePath.source)
+  return gulp.src(config.folders.styles)
     .pipe(plumber())
     .pipe(sourceMaps.init())
     .pipe(stylus({
@@ -23,13 +18,13 @@ function buildToDev() {
     }))
     .pipe(sourceMaps.write())
     .pipe(plumber.stop())
-    .pipe(gulp.dest(stylePath.destination));
+    .pipe(gulp.dest(config.folders.buildRoot));
 }
 
 function buildToProduction() {
   return buildToDev()
     .pipe(cssMin())
-    .pipe(gulp.dest(stylePath.destination));
+    .pipe(gulp.dest(config.folders.buildRoot));
 }
 
 exports.dev = buildToDev;

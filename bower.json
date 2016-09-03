@@ -1,5 +1,5 @@
 {
-  "name": "Muque",
+  "name": "muque",
   "description": "A boilerplate for front-end projects",
   "main": "gulpfile.js",
   "authors": [
@@ -7,11 +7,11 @@
   ],
   "license": "ISC",
   "keywords": [
-    "Muque",
+    "muque",
     "Boilerplate",
     "Front-end"
   ],
-  "homepage": "https://github.com/filipeltsilva/Muque",
+  "homepage": "https://github.com/filipeltsilva/muque",
   "private": true,
   "ignore": [
     "**/.*",
