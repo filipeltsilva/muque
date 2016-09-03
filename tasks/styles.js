@@ -1,3 +1,5 @@
+'use strict';
+
 const stylePath = {
   src       : './src/stylus/**/*.styl',
   stylusFile: './src/stylus/main.styl',
@@ -29,6 +31,10 @@ function buildDev() {
 }
 
 function buildProd() {
+
+}
+
+function watch() {
 
 }
 
