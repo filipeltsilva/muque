@@ -1,10 +1,8 @@
 'use strict';
 
-const fs = require('fs');
-const config = JSON.parse(fs.readFileSync('config.json'));
-
-const gulp       = require('gulp');
+const config     = require('../config.json');
 const cssMin     = require('gulp-cssmin');
+const gulp       = require('gulp');
 const koutoSwiss = require('kouto-swiss');
 const plumber    = require('gulp-plumber');
 const sourceMaps = require('gulp-sourcemaps');
