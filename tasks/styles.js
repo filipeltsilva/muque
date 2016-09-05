@@ -12,9 +12,9 @@ function buildToDev() {
   return gulp.src(config.folders.styles)
     .pipe(plumber())
     .pipe(sourceMaps.init())
-    .pipe(stylus({
-      use: koutoSwiss()
-    }))
+      .pipe(stylus({
+        use: koutoSwiss()
+      }))
     .pipe(sourceMaps.write())
     .pipe(plumber.stop())
     .pipe(gulp.dest(config.folders.buildRoot));

@@ -6,8 +6,8 @@
       "source": "./src/images"
     },
     "scripts": [
-      "./src/scripts/**/*",
-      "./src/scripts/application.js"
+      "./src/scripts/**/*.js",
+      ".src/scripts/application.js"
     ],
     "styles": [
       "./src/stylus/**/*.styl",
