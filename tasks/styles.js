@@ -1,6 +1,7 @@
 'use strict';
 
-const config = require('config.json');
+const fs = require('fs');
+const config = JSON.parse(fs.readFileSync('config.json'));
 
 const gulp       = require('gulp');
 const cssMin     = require('gulp-cssmin');
