@@ -8,7 +8,7 @@ const plumber    = require('gulp-plumber');
 const sourceMaps = require('gulp-sourcemaps');
 const stylus     = require('gulp-stylus');
 
-function buildToDev() {
+function buildStyles() {
   return gulp.src(config.folders.styles)
     .pipe(plumber())
       .pipe(sourceMaps.init())
@@ -20,11 +20,12 @@ function buildToDev() {
     .pipe(gulp.dest(config.folders.buildRoot));
 }
 
-function buildToProduction() {
-  return buildToDev()
+module.exports.dev = function() {
+  return buildStyles();
+};
+
+module.exports.production = function() {
+  return buildStyles()
     .pipe(cssMin())
     .pipe(gulp.dest(config.folders.buildRoot));
-}
-
-exports.dev = buildToDev;
-exports.production = buildToProduction;
+};

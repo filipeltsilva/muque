@@ -7,21 +7,22 @@ const plumber    = require('gulp-plumber');
 const sourceMaps = require('gulp-sourcemaps');
 const uglify     = require('gulp-uglify');
 
-function buildToDev() {
+function buildScripts() {
   return gulp.src(config.folders.scripts)
     .pipe(plumber())
       .pipe(sourceMaps.init())
-        .pipe(concat('application.js', {newLine: ';'}))
+        .pipe(concat('application.js'))
       .pipe(sourceMaps.write())
     .pipe(plumber.stop())
     .pipe(gulp.dest(config.folders.buildRoot));
 }
 
-function buildToProduction() {
-  return buildToDev()
+module.exports.dev = function() {
+  return buildScripts();
+};
+
+module.exports.production = function() {
+  return buildScripts()
     .pipe(uglify())
     .pipe(gulp.dest(config.folders.buildRoot));
-}
-
-exports.dev = buildToDev;
-exports.production = buildToProduction;
+};

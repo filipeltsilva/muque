@@ -15,8 +15,8 @@ gulp.task('clean', () => {
   });
 });
 
-gulp.task('default', styles.dev);
+gulp.task('default', scripts.dev);
 
 gulp.task('deploy', deploy);
 
-gulp.task('build', styles.production);
+gulp.task('build', scripts.production);
