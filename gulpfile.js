@@ -1,12 +1,16 @@
 'use strict';
 
-const del = require('del');
+const browserSync = require('browser-sync').create();
+const del  = require('del');
 const gulp = require('gulp');
 
+const config  = require('../config.json');
 const deploy  = require('./tasks/deploy');
 const images  = require('./tasks/images');
 const scripts = require('./tasks/scripts');
 const styles  = require('./tasks/styles');
+
+gulp.task('build', scripts.production);
 
 gulp.task('clean', () => {
   del('./dist/*').then((paths) => {
@@ -20,4 +24,8 @@ gulp.task('default', scripts.dev);
 
 gulp.task('deploy', deploy);
 
-gulp.task('build', scripts.production);
+gulp.task('server', () => {
+  browserSync.init({
+    server: config.folders.buildRoot;
+  });
+});
