@@ -9,7 +9,11 @@ const uglify     = require('gulp-uglify');
 
 function buildToDev() {
   return gulp.src(config.folders.scripts)
-    .pipe(concat('application.js'))
+    .pipe(plumber())
+      .pipe(sourceMaps.init())
+        .pipe(concat('application.js', {newLine: ';'}))
+      .pipe(sourceMaps.write())
+    .pipe(plumber.stop())
     .pipe(gulp.dest(config.folders.buildRoot));
 }
 

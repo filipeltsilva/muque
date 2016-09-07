@@ -1,3 +1,7 @@
+'use strict';
+
+const gulp = require('gulp');
+
 gulp.task('server', () => {
   browserSync.init({
     server: distPath.root
