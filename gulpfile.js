@@ -4,7 +4,7 @@ const browserSync = require('browser-sync').create();
 const del  = require('del');
 const gulp = require('gulp');
 
-const config  = require('../config.json');
+const config  = require('./config');
 const deploy  = require('./tasks/deploy');
 const images  = require('./tasks/images');
 const scripts = require('./tasks/scripts');
@@ -20,12 +20,15 @@ gulp.task('clean', () => {
   });
 });
 
-gulp.task('default', scripts.dev);
+gulp.task('default', styles.dev);
 
 gulp.task('deploy', deploy);
 
 gulp.task('server', () => {
   browserSync.init({
-    server: config.folders.buildRoot;
+    server: config.buildRoot
   });
+
+  gulp.watch(config.scripts.files, scripts.dev);
+  gulp.watch(config.styles.files, styles.dev);
 });

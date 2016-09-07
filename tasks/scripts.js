@@ -1,20 +1,22 @@
 'use strict';
 
-const concat     = require('gulp-concat');
-const config     = require('../config.json');
-const gulp       = require('gulp');
-const plumber    = require('gulp-plumber');
-const sourceMaps = require('gulp-sourcemaps');
-const uglify     = require('gulp-uglify');
+const browserSync = require('browser-sync').create();
+const concat      = require('gulp-concat');
+const config      = require('../config');
+const gulp        = require('gulp');
+const plumber     = require('gulp-plumber');
+const sourceMaps  = require('gulp-sourcemaps');
+const uglify      = require('gulp-uglify');
 
 function buildScripts() {
-  return gulp.src(config.folders.scripts)
+  return gulp.src(config.scripts.files)
     .pipe(plumber())
       .pipe(sourceMaps.init())
         .pipe(concat('application.js'))
       .pipe(sourceMaps.write())
     .pipe(plumber.stop())
-    .pipe(gulp.dest(config.folders.buildRoot));
+    .pipe(gulp.dest(config.buildRoot))
+    .pipe(browserSync.stream());
 }
 
 module.exports.dev = function() {
@@ -24,5 +26,5 @@ module.exports.dev = function() {
 module.exports.production = function() {
   return buildScripts()
     .pipe(uglify())
-    .pipe(gulp.dest(config.folders.buildRoot));
+    .pipe(gulp.dest(config.buildRoot));
 };

@@ -1,15 +1,16 @@
 'use strict';
 
-const config     = require('../config.json');
-const cssMin     = require('gulp-cssmin');
-const gulp       = require('gulp');
-const koutoSwiss = require('kouto-swiss');
-const plumber    = require('gulp-plumber');
-const sourceMaps = require('gulp-sourcemaps');
-const stylus     = require('gulp-stylus');
+const browserSync = require('browser-sync').create();
+const config      = require('../config');
+const cssMin      = require('gulp-cssmin');
+const gulp        = require('gulp');
+const koutoSwiss  = require('kouto-swiss');
+const plumber     = require('gulp-plumber');
+const sourceMaps  = require('gulp-sourcemaps');
+const stylus      = require('gulp-stylus');
 
 function buildStyles() {
-  return gulp.src(config.folders.styles)
+  return gulp.src(config.styles.files)
     .pipe(plumber())
       .pipe(sourceMaps.init())
         .pipe(stylus({
@@ -17,7 +18,8 @@ function buildStyles() {
         }))
       .pipe(sourceMaps.write())
     .pipe(plumber.stop())
-    .pipe(gulp.dest(config.folders.buildRoot));
+    .pipe(gulp.dest(config.buildRoot))
+    .pipe(browserSync.stream());
 }
 
 module.exports.dev = function() {
@@ -27,5 +29,5 @@ module.exports.dev = function() {
 module.exports.production = function() {
   return buildStyles()
     .pipe(cssMin())
-    .pipe(gulp.dest(config.folders.buildRoot));
+    .pipe(gulp.dest(config.buildRoot));
 };
