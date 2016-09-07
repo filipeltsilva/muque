@@ -4,6 +4,7 @@ const del = require('del');
 const gulp = require('gulp');
 
 const deploy  = require('./tasks/deploy');
+const images  = require('./tasks/images');
 const scripts = require('./tasks/scripts');
 const styles  = require('./tasks/styles');
 

@@ -6,13 +6,15 @@ const gulp     = require('gulp');
 const imageMin = require('gulp-imagemin');
 const plumber  = require('gulp-plumber');
 
-function buildToProduction() {
-  return gulp.src(config.folders.images.source)
+function buildImages() {
+  return gulp.src(config.folders.images_source)
     .pipe(plumber())
-    .pipe(changed(config.folders.images.destination))
-    .pipe(imageMin())
+      .pipe(changed(config.folders.images_destination))
+      .pipe(imageMin())
     .pipe(plumber.stop())
-    .pipe(gulp.dest(config.folders.images.destination));
+    .pipe(gulp.dest(config.folders.images_destination));
 }
 
-exports.production = buildToProduction;
+module.exports.production = function() {
+  return buildImages();
+};

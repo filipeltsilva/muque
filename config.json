@@ -1,10 +1,8 @@
 {
   "folders" : {
     "buildRoot": "./dist",
-    "images": {
-      "destination": "./dist/images",
-      "source": "./src/images"
-    },
+    "images_destination": "./dist/images",
+    "images_source": "./src/images/*.*",
     "scripts": [
       "./src/scripts/**/*.js",
       ".src/scripts/application.js"
