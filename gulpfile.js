@@ -6,11 +6,7 @@ const gulp = require('gulp');
 
 const config  = require('./config');
 const deploy  = require('./tasks/deploy');
-const images  = require('./tasks/images');
-const scripts = require('./tasks/scripts');
-const styles  = require('./tasks/styles');
-
-gulp.task('build', scripts.production);
+const server = require('./tasks/server');
 
 gulp.task('clean', () => {
   del('./dist/*').then((paths) => {
@@ -24,11 +20,4 @@ gulp.task('default', styles.dev);
 
 gulp.task('deploy', deploy);
 
-gulp.task('server', () => {
-  browserSync.init({
-    server: config.buildRoot
-  });
-
-  gulp.watch(config.scripts.files, scripts.dev);
-  gulp.watch(config.styles.files, styles.dev);
-});
+gulp.task('server', server);
