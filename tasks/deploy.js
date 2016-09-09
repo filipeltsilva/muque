@@ -4,7 +4,7 @@ const config = require('../config');
 const ghPages = require('gulp-gh-pages-cname');
 const gulp = require('gulp');
 
-function deploy() {
+gulp.task('deploy', () => {
   return gulp.src(config.buildRoot)
     .pipe(ghPages({
       // branch: your_branch_name
@@ -12,8 +12,4 @@ function deploy() {
       // message: your_deploy_message
       // remoteUrl: your_site_repository_url
   }));
-}
-
-module.exports = function () {
-  return deploy();
-};
+});

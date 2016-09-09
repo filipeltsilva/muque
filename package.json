@@ -34,6 +34,7 @@
     "gulp-sourcemaps": "^1.6.0",
     "gulp-stylus": "^2.4.0",
     "gulp-uglify": "^1.5.3",
-    "kouto-swiss": "^0.12.0"
+    "kouto-swiss": "^0.12.0",
+    "require-dir": "^0.3.0"
   }
 }

@@ -4,8 +4,8 @@ const browserSync = require('browser-sync').create();
 const config = require('../config');
 const gulp = require('gulp');
 
-const scripts = require('./tasks/scripts');
-const styles = require('./tasks/styles');
+// const scripts = require('./tasks/scripts');
+// const styles = require('./tasks/styles');
 
 function startServer() {
   return function() {
@@ -13,8 +13,8 @@ function startServer() {
       server: config.buildRoot
     });
 
-    gulp.watch(config.scripts.files, scripts.dev);
-    gulp.watch(config.styles.files, styles.dev);
+    // gulp.watch(config.scripts.files, scripts.dev);
+    // gulp.watch(config.styles.files, styles.dev);
   };
 }
 
