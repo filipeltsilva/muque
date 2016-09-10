@@ -2,4 +2,4 @@
 
 const gulp = require('gulp');
 
-gulp.task('build', ['clean']);
+gulp.task('build', ['clean', 'images:build', 'scripts:build', 'styles:build']);

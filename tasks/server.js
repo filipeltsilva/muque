@@ -9,6 +9,9 @@ gulp.task('server', () => {
     server: config.buildRoot
   });
 
-  // gulp.watch(config.scripts.files, scripts.dev);
-  // gulp.watch(config.styles.files, styles.dev);
+  gulp.watch(config.scripts.files, 'scripts:dev');
+  gulp.watch(config.styles.files, 'styles:dev');
 });
+
+
+gulp.task('default', ['server']);
