@@ -1,8 +1,8 @@
 'use strict';
 
-const config = require('../config');
+const config  = require('../config');
 const ghPages = require('gulp-gh-pages-cname');
-const gulp = require('gulp');
+const gulp    = require('gulp');
 
 gulp.task('deploy', () => {
   return gulp.src(config.buildRoot)

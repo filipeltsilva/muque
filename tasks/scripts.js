@@ -19,12 +19,12 @@ function buildScripts() {
     .pipe(browserSync.stream());
 }
 
-module.exports.dev = function() {
+gulp.task('scripts:dev', () => {
   return buildScripts();
-};
+});
 
-module.exports.production = function() {
+gulp.task('scripts:build', () => {
   return buildScripts()
     .pipe(uglify())
     .pipe(gulp.dest(config.buildRoot));
-};
+});

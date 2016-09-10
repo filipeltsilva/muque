@@ -18,16 +18,15 @@ function buildStyles() {
         }))
       .pipe(sourceMaps.write())
     .pipe(plumber.stop())
-    .pipe(gulp.dest(config.buildRoot))
-    .pipe(browserSync.stream());
+    .pipe(gulp.dest(config.buildRoot));
 }
 
-module.exports.dev = function() {
+gulp.task('styles:dev', () => {
   return buildStyles();
-};
+});
 
-module.exports.production = function() {
+gulp.task('styles:build', () => {
   return buildStyles()
     .pipe(cssMin())
     .pipe(gulp.dest(config.buildRoot));
-};
+});
