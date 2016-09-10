@@ -9,9 +9,9 @@ gulp.task('server', () => {
     server: config.buildRoot
   });
 
-  gulp.watch(config.scripts.files, 'scripts:dev');
-  gulp.watch(config.styles.files, 'styles:dev');
+  // gulp.watch(config.scripts.files, 'scripts:dev');
+  // gulp.watch(config.styles.files, 'styles:dev');
+  gulp.watch('./build/*.*').on('change', browserSync.reload);
 });
-
 
 gulp.task('default', ['server']);

@@ -18,7 +18,8 @@ function buildStyles() {
         }))
       .pipe(sourceMaps.write())
     .pipe(plumber.stop())
-    .pipe(gulp.dest(config.buildRoot));
+    .pipe(gulp.dest(config.buildRoot))
+    .pipe(browserSync.stream());
 }
 
 gulp.task('styles:dev', () => {
