@@ -1,2 +1,1 @@
-
-window.alert('sync');
+window.alert('browsersync bruto');

@@ -4,14 +4,17 @@ const browserSync = require('browser-sync').create();
 const config      = require('../config');
 const gulp        = require('gulp');
 
-gulp.task('server', () => {
-  browserSync.init({
+function startServer() {
+  return browserSync.init({
     server: config.buildRoot
   });
+}
 
-  // gulp.watch(config.scripts.files, 'scripts:dev');
-  // gulp.watch(config.styles.files, 'styles:dev');
-  gulp.watch('./build/*.*').on('change', browserSync.reload);
+gulp.task('server', ['scripts:dev', 'styles:dev'], () => {
+  startServer();
+
+  gulp.watch([config.scripts.files, config.scripts.mainFile], ['scripts:dev']);
+  gulp.watch([config.styles.files, config.styles.mainFile], ['styles:dev']);
 });
 
-gulp.task('default', ['server']);
+gulp.task('server:build', ['build'], () => startServer());
