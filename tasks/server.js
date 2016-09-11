@@ -10,7 +10,7 @@ function startServer() {
   });
 }
 
-gulp.task('server', ['scripts:dev', 'styles:dev'], () => {
+gulp.task('server:dev', ['scripts:dev', 'styles:dev'], () => {
   startServer();
 
   gulp.watch([config.scripts.files, config.scripts.mainFile], ['scripts:dev']);
