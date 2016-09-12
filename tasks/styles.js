@@ -1,6 +1,5 @@
 'use strict';
 
-const browserSync = require('browser-sync').create();
 const config      = require('../config');
 const cssMin      = require('gulp-cssmin');
 const gulp        = require('gulp');
@@ -18,8 +17,7 @@ function buildStyles() {
         }))
       .pipe(sourceMaps.write())
     .pipe(plumber.stop())
-    .pipe(gulp.dest(config.buildRoot))
-    .pipe(browserSync.stream());
+    .pipe(gulp.dest(config.buildRoot));
 }
 
 gulp.task('styles:dev', () => {
