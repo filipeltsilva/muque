@@ -2,7 +2,7 @@ module.exports = {
   distRoot: "./dist",
   images: {
     destination: "./dist/images",
-    source: "./src/images/*.*"
+    source: "./src/images/*"
   },
   scripts: {
     files: "./src/scripts/**/*.js",
