@@ -1,7 +1,7 @@
 module.exports = {
-  buildRoot: "./build",
+  distRoot: "./dist",
   images: {
-    destination: "./build/images",
+    destination: "./dist/images",
     source: "./src/images/*.*"
   },
   scripts: {

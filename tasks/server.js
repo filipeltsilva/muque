@@ -3,18 +3,19 @@
 const browserSync = require('browser-sync').create();
 const config      = require('../config');
 const gulp        = require('gulp');
+const reload      = browserSync.reload;
 
 function startServer() {
   return browserSync.init({
-    server: config.buildRoot
+    server: config.distRoot
   });
 }
 
 gulp.task('server:dev', ['scripts:dev', 'styles:dev'], () => {
   startServer();
 
-  gulp.watch([config.scripts.files, config.scripts.mainFile], ['scripts:dev']);
-  gulp.watch([config.styles.files, config.styles.mainFile], ['styles:dev']);
+  gulp.watch([config.scripts.files, config.scripts.mainFile], ['scripts:dev', reload]);
+  gulp.watch([config.styles.files, config.styles.mainFile], ['styles:dev', reload]);
 });
 
-gulp.task('server:build', ['build'], () => startServer());
+gulp.task('server:dist', ['build'], () => startServer());
