@@ -34,7 +34,7 @@ The tasks are located in the _/src/tasks_ folder. The tasks supported are:
 
 - _**gulp server:dev:**_ run a local [Browsersync](https://browsersync.io/) webserver, watching the changes in the _application.js_ and _style.css_ files with live reloading. Use in development environments;
 
-- _**gulp server:dist:**_ build the project to production environments with the _build_ task and run a local [Browsersync](https://browsersync.io/) webserver with the files that will go to the production environments to have a preview of what's happening;
+- _**gulp server:dist:**_ build the project to production environments with the _build_ task and run a local Browsersync webserver with the files that will go to the production environments to have a preview of what's happening;
 
 - _**gulp styles:dev:**_ generates a single and not-minified _style.css_ file to the project. Recommended to development environments;
 
