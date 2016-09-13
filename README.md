@@ -18,7 +18,7 @@ Muque also has some auxiliar tasks to help the developers/teams with activities 
 
 The tasks are located in the _/src/tasks_ folder. The tasks supported are:
 
-- _**gulp:**_ the default task, that calls the _server:dev_ task;
+- _**gulp:**_ the default task, that runs the _server:dev_ task;
 
 - _**gulp build:**_ clean the project's output folder and run the _:dist_ tasks, building the project to deploy in production environment;
 
