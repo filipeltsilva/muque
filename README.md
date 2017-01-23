@@ -10,6 +10,28 @@ This project uses [Gulp](http://gulpjs.com/) as task manager, [Bower](https://bo
 
 Muque was built in a modularized way, aiming offer to developers/teams a workflow with an easy to understand and maintainable code.
 
+## Docker support
+
+The version 1.2.0 brought the Docker support! The project contains a Dockerfile based in the [official Node.js image](https://hub.docker.com/_/node/).
+
+This Dockerfile creates and defines a working directory, copies the Muque's _package.json_ file to this directory, installs the necessary global packages and Muque's dependency packages and maps the ports to enable the host/container communication.
+
+To build the image, you should run the command below:
+
+```shell
+docker build -t the-name-you-want .
+```
+
+To run a container based in the built image, run the recommended command below:
+
+```shell
+docker run --name the-name-you-want -d -v $(pwd):/muque -p 3000:3000 -p 3001:3001 the-name-you-want gulp
+```
+
+Otherwise, if you use Node.js and NPM in your local host and you don't use Docker, you just need to run the _npm install_ command to install the dependent packages.
+
+**Remember:** you can add packages or change folder names according your necessities.
+
 ## Tasks
 
 Muque has tasks to development environments (tasks finished in _:dev_) and tasks directioned to production environments (tasks finished in _:dist_).
