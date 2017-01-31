@@ -64,5 +64,5 @@ The tasks are located in the _/src/tasks_ folder. The tasks supported are:
 
 ## To do list
 - [ ] PostCSS support
-- [ ] Babel support
+- [X] Babel support
 - [ ] ES2015 syntax

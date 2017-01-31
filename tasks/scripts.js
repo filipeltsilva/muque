@@ -1,5 +1,6 @@
 'use strict';
 
+const babel      = require('gulp-babel');
 const concat     = require('gulp-concat');
 const config     = require('../config');
 const gulp       = require('gulp');
@@ -11,6 +12,7 @@ function buildScripts() {
   return gulp.src(config.scripts.files)
     .pipe(plumber())
       .pipe(sourceMaps.init())
+        .pipe(babel())
         .pipe(concat('application.js'))
       .pipe(sourceMaps.write())
     .pipe(plumber.stop())
