@@ -1,6 +1,6 @@
 {
   "name": "muque",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A boilerplate for front-end projects",
   "main": "gulpfile.js",
   "scripts": {
