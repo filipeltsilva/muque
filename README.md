@@ -63,6 +63,6 @@ The tasks are located in the _/src/tasks_ folder. The tasks supported are:
 - _**gulp styles:dist:**_ generate a single and minified _style.css_ file to the project. Recommended to production environments.
 
 ## To do list
-- [ ] PostCSS support
-- [X] Babel support
+- [X] ~~PostCSS support~~
+- [X] ~~Babel support~~
 - [ ] ES2015 syntax
