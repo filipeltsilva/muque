@@ -16,7 +16,7 @@ function buildScripts() {
         .pipe(concat('application.js'))
       .pipe(sourceMaps.write())
     .pipe(plumber.stop())
-    .pipe(gulp.dest(config.distRoot));
+    .pipe(gulp.dest(config.scripts.destination));
 }
 
 gulp.task('scripts:dev', () => {
@@ -26,5 +26,5 @@ gulp.task('scripts:dev', () => {
 gulp.task('scripts:dist', () => {
   return buildScripts()
     .pipe(uglify())
-    .pipe(gulp.dest(config.distRoot));
+    .pipe(gulp.dest(config.scripts.destination));
 });

@@ -1,15 +1,17 @@
 module.exports = {
-  distRoot: "./dist",
+  distRoot: './dist',
   images: {
-    destination: "./dist/images",
-    source: "./src/images/*"
+    destination: './dist/assets/images',
+    source: './src/images/*'
   },
   scripts: {
-    files: "./src/scripts/**/*.js",
-    mainFile: "./src/scripts/application.js"
+    destination: './dist/assets/js',
+    files: './src/scripts/**/*.js',
+    mainFile: './src/scripts/application.js'
   },
   styles: {
-    files: "./src/stylus/**/*.styl",
-    mainFile: "./src/stylus/style.styl"
+    destination: './dist/assets/css',
+    files: './src/stylus/**/*.styl',
+    mainFile: './src/stylus/main.styl'
   }
 };

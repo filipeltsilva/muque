@@ -20,15 +20,16 @@ function buildStyles() {
         .pipe(postCss([
           autoPrefixer({
             browsers: [
-              'last 3 versions',
+              'last 5 versions',
               'Android >= 4',
-              'IE >= 9'
+              'IE >= 9',
+              '5%'
             ]
           })
         ]))
       .pipe(sourceMaps.write())
     .pipe(plumber.stop())
-    .pipe(gulp.dest(config.distRoot));
+    .pipe(gulp.dest(config.styles.destination));
 }
 
 gulp.task('styles:dev', () => {
@@ -38,5 +39,5 @@ gulp.task('styles:dev', () => {
 gulp.task('styles:dist', () => {
   return buildStyles()
     .pipe(cssMin())
-    .pipe(gulp.dest(config.distRoot));
+    .pipe(gulp.dest(config.styles.destination));
 });
